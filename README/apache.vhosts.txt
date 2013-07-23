@@ -1,0 +1,6 @@
+# 【Yaf 演示】 url: demo.yafphp.com
+
+<VirtualHost *:80>
+	DocumentRoot D:\www\demo.yafphp.com\public
+	ServerName demo.yafphp.com
+</VirtualHost>

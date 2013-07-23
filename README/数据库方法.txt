@@ -1,0 +1,46 @@
+这些是 数据库实例类(继承 Orm_Base)的一些操作方法。
+
+有任何BUG，请联系我(张洋 2050479@qq.com)，谢谢！
+
+
+# 联表查询
+//$tMO = new ArticleModel();
+//$tMO->join('category c', 'c.id=cid', 'LEFT')->fList();
+
+# SQL查询 - 返回:数组
+//$tMO->query('select * from user where id=?', 1);
+
+# SQL执行 - 返回:bool
+//$tMO->exec('DELETE FROM user');
+
+# 插入 - 返回:id
+//$tMO->insert(array('name'=>'张洋', 'email'=>'2050479@qq.com'));
+
+# 更新 - 返回:bool
+//$tMO->update(array('id' => 1, 'name' => '张洋'));
+# 等同于 :
+//$tMO->where('id=1')->update(array('name' => '张洋'));
+
+# 删除
+//$tMO->where('created=0')->del();
+//$tMO->del(1,2,3);
+//$tMO->del('status=1');
+
+# 列表
+//$tMO->where("id>0")->field('id,name,email')->limit('0,2')->order('id desc')->fList();
+//$tMO->fList('13,14,15');
+//$tMO->fList(array('where'=>"name='张洋'", 'limit'=>'0,2', 'order'=>'id desc', 'field'=>'id,name'));
+
+# 查询单条，条件 name='张洋'
+//$tMO->ffName('张洋');
+//$tMO->where("name='张洋'")->fRow();
+
+# 查询单条，条件 id=15
+//$tMO->fRow(15);
+
+# 查询某字段，返回字符串
+//$tMO->fOne('count(*)');
+
+# 查询哈西列表
+//$tMO->fHash('id,name'); # array(1=>张洋, 2=>PHP)
+//$tMO->fHash('id,name,email'); # array(1=>array(id=>1,name=>张洋,email=>2050479@qq.com), 2=>array())
